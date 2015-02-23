@@ -1,0 +1,6 @@
+.vagrant
+.vagrant/
+.idea
+.idea/
+*.pyc
+atlassian-ide-plugin.xml

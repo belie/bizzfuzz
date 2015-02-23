@@ -1,0 +1,14 @@
+-- This file is only meant to be temporary.
+
+-- Set up the bear database & user.
+CREATE DATABASE IF NOT EXISTS <%= @dist %> DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+
+-- Create the access control list for the user.
+<% @server_access_list.each do |server_name| -%>
+-- Instead of explicitly creating a user, let grant do so if needed.
+GRANT ALL PRIVILEGES ON <%= @dist %>.* TO '<%= @dist %>'@'<%= server_name %>' IDENTIFIED BY '<%= @dist %>dev';
+
+-- The database user needs super permissions in order to create the audit trail triggers.
+GRANT SUPER ON *.* TO '<%= @dist %>'@'<%= server_name %>';
+<% end -%>
+
