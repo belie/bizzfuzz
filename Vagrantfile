@@ -11,8 +11,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.provider "vmware_workstation" do |v|
-    config.vm.box = "ap.centos64.vm_workstation.box"
-    config.vm.box_url = "http://cpdevteam.s3.amazonaws.com/exos-base-centos6-x86.vmware-desktop.box"
+    config.vm.box = "exosdevteam-box"
+    config.vm.box_url = "http://exosdevteam.s3.amazonaws.com/journey-centos6-x86-vmware.box"
   end
 
   # Disable automatic box update checking. If you disable this, then
