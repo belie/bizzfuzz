@@ -19,7 +19,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='user',
             name='birthdate',
-            field=models.DateField(verbose_name=b'someones birthday'),
-            preserve_default=True,
+            field=models.DateField(verbose_name=b'someones birthday')
         ),
     ]
