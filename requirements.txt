@@ -1,4 +1,4 @@
-Django==1.7
+Django==1.7.5
 MySQL-python==1.2.5
 gunicorn==19.1.1
 xlwt==0.7.5
