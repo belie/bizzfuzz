@@ -28,6 +28,16 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.request"
+)
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -56,13 +66,25 @@ WSGI_APPLICATION = 'bizzfuzz.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydatabase',
+        'USER': 'bear',
+        'PASSWORD': 'beardev',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
+'''
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

@@ -1,10 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
+    <style>
+        body {
+            font-family: Calibri,Verdana,"Helvetica Neue",serif; /*if you change the font, also change it for the form buttons below (input, select, textarea) */
+            font-weight:normal;
+            font-size:0.875em;/*14px;*/
+            color: #000;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background:#ffffff;
+        }
+
+        body > div {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        body > div > div {
+            width: 855px;
+            margin: 0 auto;
+            padding: 5px 0px 5px 0px;
+            box-sizing: border-box;
+        }
+    </style>
     <meta charset="UTF-8">
-    <title></title>
+    <title>{% block title %}The BizzFuzz{% endblock %}</title>
 </head>
 <body>
+    <div style="background-color: antiquewhite; text-align:right">
+        <div>
+        {% if request.session.user_id %}
+          <b>Welcome</b> {{ request.session.user_email_address }} <a href="{% url 'bizzfuzz:user_logout' %}">Logout</a>
+        {% else %}
+            <form method="post" action="{% url 'bizzfuzz:user_login' %}" >
+                <b>Please Login:</b>
+                {% csrf_token %}
 
+                <input type="text" id="email_address" name="email_address" placeholder="Email Address"  value="" />
+
+                <input type="password" id="password" name="password" placeholder="Password" value="" />
+
+                <input type="submit" name="save" value="Login" />
+            </form>
+        {%endif%}
+        </div>
+    </div>
+    <div><div>
+    {% block content %}{% endblock %}
+    </div></div>
 </body>
 </html>

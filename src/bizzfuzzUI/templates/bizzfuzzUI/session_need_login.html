@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "bizzfuzzUI/base.html" %}
+{% block title %}Please Login to Continue{% endblock %}
+{% block content %}
+<h1>We're sorry, the princess is in an other castle.</h1>
 
-</body>
-</html>
+<p>Please login to continue.</p>
+
+{% if exception_message %}
+    <p style="font-weight:bold;color: #ed280f">{{exception_message}}</p>
+{% endif %}
+
+<form method="post" action="{% url 'bizzfuzz:user_login' %}" >
+    {% csrf_token %}
+
+    <p>
+        <label for="email_address">Email Address:</label><br />
+        <input type="text" id="email_address" name="email_address" value="" />
+    </p>
+
+    <p>
+        <label for="password">Password:</label><br />
+        <input type="password" id="password" name="password" value="" />
+    </p>
+    <input type="submit" name="save" value="Login" />
+</form>
+
+<p><a href="{% url 'bizzfuzz:forgot_password' %}" title="Forgot your password?">Forgot Password?</a> </p>
+{% endblock %}

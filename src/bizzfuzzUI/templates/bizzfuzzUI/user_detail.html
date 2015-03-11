@@ -1,3 +1,7 @@
+{% extends "bizzfuzzUI/base.html" %}
+{% block title %}Edit a user{% endblock %}
+
+{% block content %}
 <h1>{{title}} a user</h1>
 
 {% if error_msg %}<p style="font-weight:bold">{{error_msg}}</p> {% endif %}
@@ -10,5 +14,11 @@
     <input type="text" id="birthdate" name="birthdate" value="{{user.get_birthdate_str}}" />
     </p>
 
-    <input type="submit" name="save" value="Save Date" />
+    <p>
+    <label for="email_address">Email Address:</label><br />
+    <input type="text" id="email_address" name="email_address" value="{{user.email_address}}" />
+    </p>
+
+    <input type="submit" name="save" value="Save" />
 </form>
+{% endblock %}
